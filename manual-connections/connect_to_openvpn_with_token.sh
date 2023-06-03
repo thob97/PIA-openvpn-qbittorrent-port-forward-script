@@ -65,14 +65,8 @@ if [[ $adapter_check != *"$should_read"* ]]; then
       echo -e "It seems likely that process ${red}$old_pid${nc} is an OpenVPN connection"
       echo "that was established by using this script. Unless it is closed"
       echo "you would not be able to get a new connection."
-      echo -ne "Do you want to run ${red}$ kill $old_pid${nc} (Y/n): "
-      read -r close_connection
     fi
-    if echo "${close_connection:0:1}" | grep -iq n; then
-      echo -e "${red}Closing script. Resolve tun06 adapter conflict and run the script again."
-      exit 1
-    fi
-    echo
+    #Always kill the prev by this script established vpn process 
     echo -e "${green}Killing the existing OpenVPN process and waiting 5 seconds...${nc}"
     kill "$old_pid"
     echo

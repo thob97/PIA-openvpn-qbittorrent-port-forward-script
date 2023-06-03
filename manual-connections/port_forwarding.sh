@@ -124,7 +124,10 @@ Payload   ${green}$payload${nc}
 
 --> The port is ${green}$port${nc} and it will expire on ${red}$expires_at${nc}. <--
 
+Trying to update the port on qBittorrent... $(.././update_qbittorrent_port.sh $port $QBITTORRENT_ADDRESS $QBT_USER $QBT_PASS)
+
 Trying to bind the port... "
+
 
 # Now we have all required data to create a request to bind the port.
 # We will repeat this request every 15 minutes, in order to keep the port
@@ -139,12 +142,12 @@ while true; do
     "https://${PF_HOSTNAME}:19999/bindPort")"
     echo -e "${green}OK!${nc}"
 
-    # If port did not bind, just exit the script.
-    # This script will exit in 2 months, since the port will expire.
+    # If port did not bind, restart the script
+    # thus the openvpn client needs to be closed
     export bind_port_response
     if [[ $(echo "$bind_port_response" | jq -r '.status') != "OK" ]]; then
-      echo -e "${red}The API did not return OK when trying to bind port... Exiting.${nc}"
-      exit 1
+      echo -e "${red}The API did not return OK when trying to bind port... RESTARTING.${nc}"
+      exec .././start_pia-openvpn-qbittorrent-port-bind.sh
     fi
     echo -e Forwarded port'\t'"${green}$port${nc}"
     echo -e Refreshed on'\t'"${green}$(date)${nc}"
