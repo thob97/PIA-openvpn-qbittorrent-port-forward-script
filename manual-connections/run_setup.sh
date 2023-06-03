@@ -46,6 +46,27 @@ fi
 # Erase previous authentication token if present
 rm -f /opt/piavpn-manual/token /opt/piavpn-manual/latencyList
 
+# Check for in-line definition of $QBITTORRENT_ADDRESS
+if [[ -z $QBITTORRENT_ADDRESS ]]; then
+  echo Qbittorrent address is required but not specified. Exiting.
+  exit  
+fi
+export QBITTORRENT_ADDRESS
+
+# Check for in-line definition of $QBITTORRENT_ADDRESS
+if [[ -z $QBT_USER ]]; then
+  echo Qbittorrent username is required but not specified. Exiting.
+  exit  
+fi
+export QBT_USER
+
+# Check for in-line definition of $QBITTORRENT_ADDRESS
+if [[ -z $QBT_PASS ]]; then
+  echo Qbittorrent password is required but not specified. Exiting.
+  exit  
+fi
+export QBT_PASS
+
 # Retry login if no token is generated
 while :; do
     while :; do
