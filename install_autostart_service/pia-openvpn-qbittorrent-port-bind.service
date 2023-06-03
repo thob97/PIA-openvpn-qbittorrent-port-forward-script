@@ -1,0 +1,16 @@
+[Unit]
+Description=Autostart openvpn with pia connection & bind port & sync qbittorrent accordingly
+After=network.target
+
+[Service]
+#Do not change to "simple"
+Type=exec
+User=root
+Group=root
+UMask=007
+ExecStart=sudo /usr/local/bin/start_pia-openvpn-qbittorrent-port-bind.sh
+Restart=on-failure
+SyslogIdentifier=pia-openvpn-qbittorent-portbind
+
+[Install]
+WantedBy=multi-user.target
