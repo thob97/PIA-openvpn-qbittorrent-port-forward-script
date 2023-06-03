@@ -1,0 +1,16 @@
+[Unit]
+Description=qBittorrent Command Line Client
+After=network.target
+
+[Service]
+#Do not change to "simple"
+Type=exec
+User=qbittorrent-nox
+Group=qbittorrent-nox
+UMask=007
+ExecStart=/usr/local/bin/qbittorrent-nox.sh
+Restart=on-failure
+SyslogIdentifier=qbittorrent-nox
+
+[Install]
+WantedBy=multi-user.target
