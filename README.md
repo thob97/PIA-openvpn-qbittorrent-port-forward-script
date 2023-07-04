@@ -29,7 +29,7 @@ In order for the scripts to work (probably even if you do a manual setup), you w
 
 To get started, clone this repository and edit the start script using the following commands:
 ```
-git clone https://github.com/pia-foss/manual-connections.git
+git clone https://github.com/thob97/PIA-openvpn-qbittorrent-port-forward-script.git
 cd PIA-openvpn-qbittorrent-port-forward-script
 nano start_pia-openvpn-qbittorrent-port-bind.sh
 ```
