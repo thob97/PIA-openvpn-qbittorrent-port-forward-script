@@ -1,13 +1,12 @@
 [Unit]
-Description=qBittorrent Command Line Client
-After=network.target
+Description=qBittorrent-nox service
+Wants=network-online.target
+After=network-online.target nss-lookup.target
 
 [Service]
-#Do not change to "simple"
 Type=exec
 User=qbittorrent-nox
 Group=qbittorrent-nox
-UMask=007
 ExecStart=/usr/local/bin/qbittorrent-nox.sh
 Restart=on-failure
 SyslogIdentifier=qbittorrent-nox
