@@ -22,6 +22,7 @@ This programm adds the following **new functionalities**:
 In order for the scripts to work (probably even if you do a manual setup), you will need the following packages:
  * `curl`
  * `jq`
+ * `sudo`
  * `openvpn`
  * `qbittorrent`
 
