@@ -25,7 +25,7 @@ In order for the scripts to work (probably even if you do a manual setup), you w
  * `openvpn`
  * `qbittorrent`
 
-## Installtion and Setup
+## Installation and Setup
 
 To get started, clone this repository and edit the start script using the following commands:
 ```
